@@ -8,16 +8,18 @@ CONFIG += c++17
 
 SOURCES += \
     ../src/ObjLoaderRayTracing/main.cpp \
-    ../src/ObjLoaderRayTracing/Model/Model.cpp \
-    ../src/ObjLoaderRayTracing/View/ViewApplication.cpp \
-    ../src/ObjLoaderRayTracing/Model/ModelParser/ObjLoader.cpp
+    ObjLoaderRayTracing/Model/Model.cpp \
+    ObjLoaderRayTracing/Model/ModelParser/ObjLoader.cpp
+#    ../src/ObjLoaderRayTracing/View/ViewApplication.cpp \
+#    ../src/ObjLoaderRayTracing/CustomWidget/CustomOpenGlWidget.cpp
 
 HEADERS += \
-    ../src/ObjLoaderRayTracing/Model/Model.h \
-    ../src/ObjLoaderRayTracing/Model/ModelParser/I3DGeometryLoader.h \
-    ../src/ObjLoaderRayTracing/Model/ModelParser/ObjLoader.h \
-    ../src/ObjLoaderRayTracing/View/ViewApplication.h \
-    ../src/ObjLoaderRayTracing/Model/ModelParser/ModelData.h
+#    ../src/ObjLoaderRayTracing/View/ViewApplication.h \
+    ObjLoaderRayTracing/Model/ModelParser/I3DGeometryLoader.h \
+    ObjLoaderRayTracing/Model/ModelParser/ModelData.h \
+    ObjLoaderRayTracing/Model/ModelParser/ObjLoader.h \
+ \#    ObjLoaderRayTracing/CustomWidget/CustomOpenGlWidget.h
+    ObjLoaderRayTracing/Model/Model.h
 
 #FORMS += \
 #    ../src/ObjLoaderRayTracing/UiFiles/ViewApplication.ui
@@ -27,5 +29,6 @@ HEADERS += \
 #else: unix:!android: target.path = /opt/$${TARGET}/bin
 #!isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    ObjLoaderRayTracing/Shaders.qrc
+#RESOURCES += \
+#    ObjLoaderRayTracing/Shaders.qrc
+

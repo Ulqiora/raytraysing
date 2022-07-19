@@ -7,15 +7,21 @@ void ObjLoader::parserForF(std::stringstream &ss)
         if (counter == 0) vertex_position_indicies.push_back(temp_int);
         else if (counter == 1) vertex_texcoord_indicies.push_back(temp_int);
         else if (counter == 2) vertex_normal_indicies.push_back(temp_int);
-        if (ss.peek() == '/') {
+        if (counter==0&&ss.peek() == '/') {
             ++counter;
             ss.ignore(1, '/');
-        } else if (ss.peek() == ' ') {
+            if(ss.peek() == '/'){
+                ++counter;
+                ss.ignore(1, '/');
+            }
+        } else if (counter==1&&ss.peek() == '/'){
             ++counter;
+            ss.ignore(1, '/');
+        }
+        if (ss.peek() == ' ') {
+            counter = 0;
             ss.ignore(1, ' ');
         }
-        if (counter > 2)
-            counter = 0;
     }
 }
 
@@ -36,8 +42,7 @@ void ObjLoader::dataGenerate(std::vector<Vertex> *data)
 std::vector<Vertex>*ObjLoader::chooseFile(const std::string &filename)
 {
     std::vector<Vertex>* data= new std::vector<Vertex>;
-    vec3 temp_vec3;
-    vec2 temp_vec2;
+    double tempX,tempY,tempZ;
     std::ifstream fileStream(filename);
     if (fileStream.fail()) std::invalid_argument("This file is not to be opened");
     std::string line,prefix;
@@ -51,14 +56,14 @@ std::vector<Vertex>*ObjLoader::chooseFile(const std::string &filename)
         }else if (prefix == "s"){
         }else if (prefix == "use_mtl"){
         }else if (prefix=="v"){
-            ss>>temp_vec3.x>>temp_vec3.y>>temp_vec3.z;
-            vertices.push_back(temp_vec3);
+            ss>>tempX>>tempY>>tempZ;
+            vertices.push_back(QVector3D(tempX,tempY,tempZ));
         }else if(prefix=="vt"){
-            ss >> temp_vec2.x >> temp_vec2.y;
-            tex_coords.push_back(temp_vec2);
+            ss>>tempX>>tempY;
+            tex_coords.push_back(QVector2D(tempX,tempY));
         } else if (prefix=="vn"){
-            ss >> temp_vec3.x >> temp_vec3.y >> temp_vec3.z;
-            normales.push_back(temp_vec3);
+            ss>>tempX>>tempY>>tempZ;
+            vertices.push_back(QVector3D(tempX,tempY,tempZ));
         } else if (prefix == "f"){
             parserForF(ss);
         } else {

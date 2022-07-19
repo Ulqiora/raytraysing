@@ -5,9 +5,9 @@ namespace s21{
 class ObjLoader : public I3DGeometryLoader
 {
 private:
-    std::vector<vec3> vertices;
-    std::vector<vec3> normales;
-    std::vector<vec2> tex_coords;
+    std::vector<QVector3D> vertices;
+    std::vector<QVector3D> normales;
+    std::vector<QVector2D> tex_coords;
     std::vector<int> vertex_position_indicies;
     std::vector<int> vertex_texcoord_indicies;
     std::vector<int> vertex_normal_indicies;
