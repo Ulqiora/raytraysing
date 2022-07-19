@@ -28,7 +28,7 @@ void CustomOpenGlWidget::resizeGL(int w, int h){
 
 void CustomOpenGlWidget::paintGL()
 {
-
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 
 
