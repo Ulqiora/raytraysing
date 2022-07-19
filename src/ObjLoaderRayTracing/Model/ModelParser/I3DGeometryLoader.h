@@ -5,6 +5,9 @@
 #include <fstream>
 #include "ModelData.h"
 namespace s21{
+enum class geomLoadStrategy{
+    ObjLoader=1
+};
 class I3DGeometryLoader{
 public:
     virtual std::vector<Vertex>* chooseFile(const std::string& filename )=0;

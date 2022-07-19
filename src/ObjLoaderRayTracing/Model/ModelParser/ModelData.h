@@ -6,6 +6,7 @@ struct vec3 {
 
    public:
     vec3()=default;
+    vec3(float value) : x(value), y(value), z(value) {}
     vec3(float xNew, float yNew, float zNew) : x(xNew), y(yNew), z(zNew) {}
     vec3(const vec3& other) = default;
     vec3& operator=(const vec3& other)=default;
@@ -16,6 +17,7 @@ struct vec2 {
 
    public:
     vec2()=default;
+    vec2(float value) : x(value), y(value) {}
     vec2(float xNew, float yNew) : x(xNew), y(yNew) {}
     vec2(const vec2& other) = default;
     vec2& operator=(const vec2& other)=default;
