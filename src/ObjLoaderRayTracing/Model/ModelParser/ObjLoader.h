@@ -15,7 +15,7 @@ private:
     void parserForF(std::stringstream&);
     void dataGenerate(std::vector<Vertex>*);
 public:
-    virtual std::vector<Vertex>* chooseFile(const std::string& )override;
+    virtual std::vector<IMesh*>* chooseFile(const std::string& )override;
 };
 }   //    namespace s21
 #endif // OBJLOADER_H
